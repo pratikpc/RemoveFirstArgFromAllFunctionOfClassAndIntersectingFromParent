@@ -1,0 +1,45 @@
+{
+  "name": "@pratikpc/removefirstargfromallfunctionofclassandintersectingfromparent",
+  "version": "0.0.0",
+  "description": "A Standard-Compliant Globally Unique IDentifier (GUID) generator for Node.js and Browser. Fork of guid",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "lint": "eslint --cache --max-warnings=0 --fix lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pratikpc/removefirstargfromallfunctionofclassandintersectingfromparent.git"
+  },
+  "keywords": [
+    "RFC4122",
+    "GUID",
+    "Generate",
+    "Node",
+    "Browser"
+  ],
+  "author": "Pratik Chowdhury (https://github.com/pratikpc)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pratikpc/removefirstargfromallfunctionofclassandintersectingfromparent/issues"
+  },
+  "homepage": "https://github.com/pratikpc/removefirstargfromallfunctionofclassandintersectingfromparent",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^15.12.2",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-typescript-prettier": "^4.2.0",
+    "prettier": "^2.3.1",
+    "rimraf": "^3.0.2",
+    "tap-nyc": "^1.0.3",
+    "typescript": "^4.3.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,42 @@
+name: Publish to NPM
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - name: Cache node_modules
+        id: cache-modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: 12.x-${{ runner.OS }}-build-${{ hashFiles('package.json') }}
+
+      - name: Install
+        if: steps.cache-modules.outputs.cache-hit != 'true'
+        run: npm install
+
+      - run: npm run build
+
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create Release
+        id: create_release
+        uses: zendesk/action-create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Please go to https://npmjs.com/package/@pratikpc/removefirstargfromallfunctionofclassandintersectingfromparent
+            Install as npm install @pratikpc/removefirstargfromallfunctionofclassandintersectingfromparent --save
+          draft: false
+          prerelease: false
